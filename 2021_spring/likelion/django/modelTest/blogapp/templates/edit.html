@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Edit New Blog</title>
+</head>
+<body>
+    <h1>Edit Your Blog</h1>
+    <!-- url에 id 값을 같이 보내준다 !! -->
+    <form action="{%url 'update' blog.id%}" method="POST"> 
+        <!-- csrf 공격 방지용으로 꼭 넣어주자. -->
+        {%csrf_token%}
+        <p>제목 : <input type="text" name="title" value="{{blog.title}}"></p>
+        <p>작성자 : <input type="text" name="writer" value="{{blog.writer}}"></p>
+        <p>사진 : <input type="file" name="image" value="{{blog.image}}"></p>
+        본문<br>
+        <textarea name="body" id="" cols="30" rows="10" >{{blog.body}}</textarea>
+        <br> <button type="submit">submit</button>
+    </form>
+</body>
+
+</html>

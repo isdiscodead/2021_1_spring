@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "myvenv/bin/python",
+    "python.analysis.extraPaths": ["/Users/isdiscodead/Documents/2021 spring/likelion/django/modelTest"],
+}

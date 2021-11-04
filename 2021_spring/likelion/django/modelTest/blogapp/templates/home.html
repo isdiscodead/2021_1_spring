@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+
+    {% if user.is_authenticated %}
+    {{user.nickname}} ( {{user.username}} )
+    {% endif %}
+
+    <a href="?search=true&writer={{user.nickname}}">내가 쓴 글</a>
+
+    <h1>Blog Project</h1>
+    <div class="container">
+        <hr>
+        {% for blog in blogs %}
+            <!-- 모델이나 객체 등의 내부 요소에 접근할 때는 .을 사용한다 -->
+            <div>
+                <b>{{blog.title}}</b>
+                {{blog.writer}}
+                {{blog.summary}} <a href="{%url 'detail' blog.id %}"> ... more</a>
+            </div><br>
+        {% endfor %}
+    </div>
+
+    {% if blogs.has_previous %} 
+    &nbsp;<a href="?page=1"><<</a>&nbsp;
+    &nbsp;<a href="?page={{blogs.previous_page_number}}"><</a>&nbsp;
+    {% endif %}
+
+    <span>{{blogs.number}}</span>
+    <span>of</span>
+    <span>{{blogs.paginator.num_pages}}</span>
+
+    {% if blogs.has_next %}
+    &nbsp;<a href="?page={{blogs.next_page_number}}">></a>&nbsp;
+    &nbsp;<a href="?page={{blogs.paginator.num_pages}}">>></a>&nbsp;
+    {% endif %}
+</body>
+{% endblock%}

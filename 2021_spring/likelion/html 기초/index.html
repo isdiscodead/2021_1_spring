@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8">
+        <title>나를 소개해요</title>
+    </head>
+
+    <!-- ! + tap으로 기본 틀 자동 작성 가능 --> 
+
+    <body>
+        
+        <h1>지언을 소개합니당</h1>
+        <h2>안녕하세욜</h2>
+
+    <!-- 사용자로부터 정보를 입력받는 form 태그, action 속성은 데이터를 전송받을 대상 -->  
+        <form action="전송받을 대상" > 
+            아이디 : <input type="text" name="myid">
+            비밀번호 : <input type="password" name="mypw">
+            <input type="submit"> 
+        </form>
+        <br>
+
+        <!-- src : 이미지 위치 속성, 이렇게 지정하려면 같은 폴더에 존재해야 한다. -->
+        <img src="snowman.jpg" width="300">
+        <br>
+        
+        <form action = "전송 받을 대상">
+            <h2>나의 일기장</h2>
+            제목 : <input type="text" name="diaryTitle"/><br>
+            
+            <select>
+                <option value="goodDay">좋은 날</option>
+                <option value="sadDay">슬픈 날</option>
+                <option value="sosoDay">그저 그런 날</option>
+            </select>
+            
+            내용 : <br>
+            <textarea cols="30" rows="20"></textarea><br>
+            <input type="submit"> 
+        </form> <br>
+        
+        <div> 
+            <!--- ol>li*4 + tap키 이런 식으로 틀 작성 단축 가능 --->
+            <h2>나의 일대기</h2>
+            <ol>
+                <li><a href="1.html">유년기</a></li>
+                <li><a href="2.html">질풍노도의 시기</a></li>
+                <li><a href="#">지금</a></li>
+            </ol>
+
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        
+    </body>
+
+
+</html>

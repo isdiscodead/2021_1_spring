@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <h1>{{blog.title}}</h1> 
+    <div>
+        작성자 : {{blog.writer}} &nbsp; &nbsp; 
+        작성일 : {{blog.pup_date}}
+        <hr>
+
+        <!-- image가 없을 경우를 대비하여 if문으로 null check -->
+        {% if blog.image %} 
+        <img src="{{blog.image.url}}" width="400"><br>
+        {% endif %}
+
+        {{blog.body}}
+    </div>      
+
+    <a href="{% url 'edit' blog.id%}">edit </a> &nbsp; &nbsp; 
+    <a href="{% url 'delete' blog.id%}">delete</a>
+</body> 
+{% endblock %} 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Word Count</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h2>Full Text</h2>
+        <div>{{fullText}}</div><br><br>
+
+        <h2>Full Count</h2>
+        <div>{{count}} words</div><br>
+
+        <div>
+            {% for word, totalCount in wordDict %}
+                {{word}} : {{totalCount}}
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
