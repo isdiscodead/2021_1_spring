@@ -2,8 +2,8 @@
 using namespace std;
 
 int double_value( int n );
-int double_pointer( int *n );
-int double_ref( int &n );
+void double_pointer( int *n );
+void double_ref( int &n );
 
 int main(void) {
     int n;
@@ -24,14 +24,14 @@ int main(void) {
 
 
 int double_value( int n ) {
-    n += n;
+    n *= 2;
     return n;
 }
-int double_pointer( int *n ) {
-    *n += *n;
-    return *n;
+
+void double_pointer( int *n ) {
+    *n *= 2;
 }
-int double_ref( int &n ) {
-    n += n;
-    return n;
+
+void double_ref( int &n ) {
+    n *= 2;
 }

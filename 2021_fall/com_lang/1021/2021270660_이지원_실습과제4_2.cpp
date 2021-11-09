@@ -2,6 +2,8 @@
 #include <cstring>
 using namespace std;
 
+char s;
+
 char& find( char* str, char find, bool& result ) {
     for (int i=0; str[i] ; i++ ) {
         if( str[i] == find ) {
@@ -10,10 +12,9 @@ char& find( char* str, char find, bool& result ) {
         }
     }
     result = false;
-    // return을 쓰지 않더라도 참조 변수의 공간은 자동으로 넘어감?????? 이게무넌?
-
-    // char s = 'n';
-    // return s;
+    
+    s = 'n';
+    return s;
     // 이 코드 있으면 왜 뜨는 거?????????????????
 }
 
