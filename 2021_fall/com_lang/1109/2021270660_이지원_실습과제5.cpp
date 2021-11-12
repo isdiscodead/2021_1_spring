@@ -21,9 +21,9 @@ public:
     Complex& operator -=(Complex op2);
     bool operator !=(Complex op2);
 
-    friend Complex operator ~(Complex op);
-    friend Complex operator --(Complex& op, int notused);
-    friend Complex& operator ++(Complex& op);
+    Complex operator ~();
+    Complex operator --(int notused);
+    Complex& operator ++();
 };
 
 
@@ -62,23 +62,23 @@ bool Complex::operator!= (Complex op2) {
     return false;
 }
 
-Complex operator ~ (Complex op) {
+Complex Complex::operator ~ () {
     Complex temp;
-    temp.real = op.real;
-    temp.imaginary = -(op.imaginary);
+    temp.real = this->real;
+    temp.imaginary = -(this->imaginary);
     return temp;
 }
 
-Complex operator -- (Complex& op, int notused) {
+Complex Complex::operator -- (int notused) {
     Complex temp;
-    temp = op;
-    op.real -= 1;
+    temp = *this;
+     this->real -= 1;
     return temp;
 }
 
-Complex& operator ++(Complex& op) {
-    op.real += 1;
-    return op;
+Complex& Complex::operator ++() {
+    this->real += 1;
+    return *this;
 }
 
 
