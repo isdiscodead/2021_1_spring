@@ -70,66 +70,81 @@ int main( void ) {
 // 연산자 함수 구현
 Fraction Fraction::operator+ (Fraction op2) {
     Fraction result;
-    result.setDenom(this->getDenom() * op2.getDenom() );
-    result.setNum( this->getNum() * op2.getDenom() + this->getDenom() * op2.getNum() );
+    result.denom = (denom * op2.denom );
+    result.num = ( num * op2.denom + denom * op2.num );
     return result;
 }
 
 bool Fraction::operator== (Fraction op2) {
-    if( this->getNum() / double(this->getDenom()) == op2.getNum() / double(op2.getDenom()) ) {
-        return true;
-    }
-    return false;
+    // return ( num / double(denom) == op2.num / double(op2.denom) );
+    // 정밀도( precision ) 문제 때문에 오류가 날 수 있음!! 따라서 다른 방법 사용
+    return ( num*op2.denom == op2.num * denom );
+
 }
 
 Fraction Fraction::operator^ (int op2) {
     Fraction result;
     for( int i=0; i < op2 ; i++ ) {
-        result.setDenom( result.getDenom() * this->getDenom() );
-        result.setNum( result.getNum() * this->getNum() );
+        result.denom = result.denom * denom ;
+        result.num = ( result.num * num );
     }
     return result;
 }
 
 Fraction Fraction::operator++ (int notused) {
     Fraction result = *this;
-    this->setNum( this->getNum() + this->getDenom() );
+    this->num = ( num + denom );
     return result;
 }
 
 Fraction& Fraction::operator*= (Fraction op2) {
-    this->setDenom( this->getDenom() * op2.getDenom() );
-    this->setNum( this->getNum() * op2.getNum() );
+    this->denom = ( denom * op2.denom );
+    this->num = ( num * op2.num );
     return *this;
 }
 
 ostream& operator<< (ostream& stream, Fraction op) {
-    stream << op.getNum() << "/" << op.getDenom();
+    stream << op.num << "/" << op.denom;
     return stream;
 }
 
 bool operator< (Fraction op1, Fraction op2) {
-    if( (op1.getNum() / double(op1.getDenom())) < (op2.getNum() / double(op2.getDenom())) ) {
-        return true;
+    // return (op1.num / double(op1.denom)) < (op2.num / double(op2.denom));
+    // 마찬가지로 정확도 문제로 인해 곱하기 방법 사용
+    
+    // 그런데 곱하기 사용 시 2/-5와 -3/4에서 오류가 남 
+    // 8 vs 15로 -3/4가 더 크다고 됨!! ( 두 분모의 부호가 다를 때 )
+
+    // -2/5와 -3/4는 -8 vs -15로 -2/5가 크다고 잘 된다
+    // 같다의 경우엔 -8 vs -15나 8 vs 15나 똑같음
+    if ( op1.denom * op2.denom < 0 ) {
+        // 올바른 결과를 위해서는 전체에 - 곱해야 하므로 반대 경우로 return! 
+        return !(op1.num * op2.denom < op2.num * op1.denom );
     }
-    return false;
+    return ( op1.num * op2.denom < op2.num * op1.denom );
 }
 
 Fraction operator/ (int op1, Fraction op2) {
     Fraction result;
-    result.setNum( op1 * op2.getDenom() );
-    result.setDenom( 1 * op2.getNum() );
+    result.num = ( op1 * op2.denom );
+    result.denom = op2.num;
     return result;
 }
 
 Fraction operator~ (Fraction op) {
     Fraction result;
-    result.setNum( op.getDenom() );
-    result.setDenom( op.getNum() );
+    result.num = op.denom;
+    result.denom = op.num;
+
+    // call by value이므로 아래 방법도 사용 가능!!
+    // int tmp = op.denom;
+    // op.denom = op.num;
+    // op.num = tmp;
+
     return result;
 }
 
 Fraction& operator-- (Fraction& op) {
-    op.setNum( op.getNum() - op.getDenom() );
+    op.num -= op.denom;
     return op;
 }
