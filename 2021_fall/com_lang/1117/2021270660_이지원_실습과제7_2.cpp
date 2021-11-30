@@ -13,6 +13,8 @@ public:
     string getName() { return name; }
 };
 
+// 부모 클래스에서 생성자랑 display 구현 후 자식 클래스에서 Student::display(); 호출할 수 있음!!
+
 
 class FirstGrade:Student {
     int math;
