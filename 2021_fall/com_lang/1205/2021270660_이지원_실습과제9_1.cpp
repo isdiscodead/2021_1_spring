@@ -50,6 +50,21 @@ public:
 int main(void) {
     Convert *p[3] = {new MtoKm(23.2), new LtoG(10.3), new CtoF(24.5)};
 
+    /*
+    Convert *p[3];
+
+    try {
+        p[0] = new MtoKm(23.2);
+        p[1] = new LtoG(10.3);
+        p[2] = new CtoF(24.5);
+    } catch ( bad_alloc ) {
+        cout << "동적 할당 실패\n";
+        return 0;
+    }
+    */
+
+    // 포인터 배열이므로 각각 접근하되 p[i] -> compute()
+    // delete p[i]로 되는 것! 
     for (int i = 0; i < 3; i++) {
         p[i]->compute();
         p[i]->display();
