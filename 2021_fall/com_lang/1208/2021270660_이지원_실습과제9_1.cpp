@@ -2,6 +2,7 @@
 using namespace std;
 
 template <class T>
+/*
 void reverseArray(T arr[], int size) {
     T* temp = new T[size];
     for ( int i=0 ; i < size ; i++ ) {
@@ -10,6 +11,19 @@ void reverseArray(T arr[], int size) {
     for ( int i = 0 ; i < size ; i++ ) {
         arr[i] = temp[size - i-1];  // size-1 인덱스부터 복사
     } 
+    // 이거 할거면 delete 해야함 !!
+    delete [] temp;
+}
+*/
+void reverseArray(T1 arr[], int size) {
+    int tempSize = size / 2;
+    T1 temp;
+    // 맨앞 <-> 맨뒤로 순서대로 바꿔준다 !! 효율적인 계산 ...
+    for ( int i=0 ; i < tempSize; i++ ) {
+        temp = arr[i];
+        arr[i] = arr[size-1-i];
+        arr[size-1-i] = temp;
+    }
 }
 
 template <class T>
