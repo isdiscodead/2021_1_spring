@@ -15,9 +15,9 @@ void reverseArray(T arr[], int size) {
     delete [] temp;
 }
 */
-void reverseArray(T1 arr[], int size) {
+void reverseArray(T arr[], int size) {
     int tempSize = size / 2;
-    T1 temp;
+    T temp;
     // 맨앞 <-> 맨뒤로 순서대로 바꿔준다 !! 효율적인 계산 ...
     for ( int i=0 ; i < tempSize; i++ ) {
         temp = arr[i];
