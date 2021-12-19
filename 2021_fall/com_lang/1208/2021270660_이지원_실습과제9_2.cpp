@@ -12,17 +12,35 @@ public:
     bool operator> ( const Circle op ); // op2는 바뀌면 안 되므로 const 붙여주기
 };
 
+
+/*
 // 연산자를 정의하는 방법
 template <class T>
 bool Circle<T>::operator> ( const Circle<T> op ) {
    return this->radius > op.getRadius();
 }
+*/
 
+
+/* 
 // bigger()를 재정의 하는 방법도 있음!
+// 직접 데이터형 넣어서 구체화 할 때는 template 선언 X
+Circle<int> bigger ( Circle<int> a, Circle<int> b) {
+    if ( a.getRadius() > b.getRadius() ) {
+        return a;
+    }
+    return b;
+}
+*/
+
 template <class T>
 Circle<T> bigger ( Circle<T> a, Circle<T> b) {
-    return a.getRadius() > b.getRadius;
+    if ( a.getRadius() > b.getRadius() ) {
+        return a;
+    }
+    return b;
 }
+
 
 template <class T>
 T bigger(T a, T b) { // 두 개의 매개 변수를 비교하여 큰 값을 리턴

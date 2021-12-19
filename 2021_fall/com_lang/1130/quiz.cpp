@@ -5,7 +5,6 @@ class A {
 public:
     void f1(){ cout << "A::f1()\n"; }
     virtual void f2() { cout << "A::f2()\n"; }
-    void f3(){ cout << "A::f3()\n"; }
 };
 
 class B : public A {
@@ -14,7 +13,7 @@ public:
     void f2() { cout << "B::f2()\n"; }
     // virtual이 있으면 자식에 한해서 가상 함수가 됨 -> 자식이 있을 수도 있으니 동적 바인딩을 위해 기다리게 됨
     // virtual이 없으면 그냥 정적바인딩이 되기 때문에 B의 f3()의 시작 주소가 연결되고 멤버변수에 접근 X 이므로 실행되는 것
-    virtual void f3() { cout << "B::f3()\n"; }
+    void f3() { cout << "B::f3()\n"; }
 };
 
 class C : public A {
@@ -23,6 +22,14 @@ public:
 };
 
 int main(void) {
+    A *pA = new B;
+    pA -> f1();
+    pA -> f2();
+    // pA -> f3();
+
+    pA= new C;
+    pA -> f2();
+
     B *pB = (B*)(new A);    // 다운 캐스팅
     
     pB -> f1();     // B::f1() 가상 함수 X

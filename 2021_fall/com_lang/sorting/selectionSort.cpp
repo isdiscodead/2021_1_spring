@@ -24,3 +24,7 @@
         swap(arr[i], arr[loc])
      }
  }
+
+ int main(void) {
+     
+ }
