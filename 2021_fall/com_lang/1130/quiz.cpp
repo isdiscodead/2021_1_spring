@@ -25,7 +25,7 @@ int main(void) {
     A *pA = new B;
     pA -> f1();
     pA -> f2();
-    // pA -> f3();
+    pA -> f3();
 
     pA= new C;
     pA -> f2();
