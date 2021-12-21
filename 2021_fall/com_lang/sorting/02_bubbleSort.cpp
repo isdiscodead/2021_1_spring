@@ -29,6 +29,7 @@ void bubbleSort2(T arr[], int size) {
 }
 
 
+
 int main(void) {
     int arrSize = 5;
     int arrInt[5] = {1, 3, 6, 2, -10};
